@@ -2,19 +2,19 @@ import React from 'react'
 import MeetupList from '../components/Meetups/MeetupList';
 const DUMMY_DATA = [
     {
-        "id":1,
+        "id": 1,
         "color": "purple",
-        "type": "minivan",
+        "title": "minivan",
         "registration": new Date('2017-01-03'),
-        "capacity": 7
-      },
-      {
-        "id":2,
+        "description": 7
+    },
+    {
+        "id": 2,
+        "title": "station wagon",
         "color": "red",
-        "type": "station wagon",
         "registration": new Date('2018-03-03'),
-        "capacity": 5
-      },
+        "description": 5
+    },
 ]
 function AllMeetupsPage() {
     return (
@@ -22,13 +22,15 @@ function AllMeetupsPage() {
             {/* <ul>
                 {DUMMY_DATA.map((meetup) =>{
                     return <li key={meetup.id}>
-                       COlor: {meetup.color}
+                       Title: {meetup.type}
                     </li>
                 })}
             </ul> */}
+
+            <MeetupList meetups={DUMMY_DATA} />
         </div>
 
-        
+
     )
 }
 

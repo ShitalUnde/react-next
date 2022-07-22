@@ -1,21 +1,25 @@
-import React from 'react'
-import NewMeetsupItem from './MeetupItem';
-import classes from './MeetupList.module.css'
+import React from "react";
+import MeetupItem from "./MeetupItem";
+import classes from "./MeetupList.module.css";
 
-function MeetList(props) {
-    return (
-      <ul className={classes.list}>
-        {props.meetups.map(meetup => <NewMeetsupItem 
-                key={meetup.id} 
-                id={ meetup.id}
-                image={meetup.image}
-                title={meetup.title}
-                address={meetup.address}
-                description={meetup.description}
-                />
-            )}
-      </ul>
-    )
+function MeetupList(props) {
+  console.log('.......................',props);
+  return (
+    <ul>
+      {props.meetups.map((meetup) => {
+        return (
+          <MeetupItem
+          key={meetup.id}
+          id={meetup.id}
+          // image={meetup.image}
+          title={meetup.title}
+          // address={meetup.address}
+          // description={meetup.description}
+          />
+          );
+        })}
+    </ul>
+  );
 }
 
-export default MeetList;
+export default MeetupList;
