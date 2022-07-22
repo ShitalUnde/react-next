@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MeetupList from '../components/Meetups/MeetupList';
 const DUMMY_DATA = [
     {
@@ -17,6 +17,45 @@ const DUMMY_DATA = [
     },
 ]
 function AllMeetupsPage() {
+    const [data, setData] = useState([])
+
+    // useEffect(() => {
+    //     const getData = async () => {
+    //         try {
+    //             const response = await fetch(
+    //                 `https://jsonplaceholder.typicode.com/posts`
+    //             );
+    //             if (!response.ok) {
+    //                 throw new Error(
+    //                     `This is an HTTP error: The status is ${response.status}`
+    //                 );
+    //             }
+    //             let actualData = await response.json();
+    //             // setData(actualData);
+    //             console.log(actualData);
+    //             // setError(null);
+    //         } catch (err) {
+    //             // setError(err.message);
+    //             // setData(null);
+    //         } finally {
+    //             // setLoading(false);
+    //         }
+    //     }
+    //     getData()
+    // }, [])
+
+    useEffect(() => {
+
+        try {
+            fetch(`https://jsonplaceholder.typicode.com/posts?_limit=10`).then(data => data.json()).then(data => setData(data))
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }, [])
+
+
     return (
         <div>All Meetups Page
             {/* <ul>
@@ -27,7 +66,7 @@ function AllMeetupsPage() {
                 })}
             </ul> */}
 
-            <MeetupList meetups={DUMMY_DATA} />
+            <MeetupList meetups={data} />
         </div>
 
 
