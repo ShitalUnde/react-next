@@ -2,8 +2,7 @@
 // import Modal from './components/Modal';
 import React from 'react'
 
-import Todo from './components/Todo';
-import { Route, Routes ,Switch} from 'react-router-dom'
+import { Route, Routes} from 'react-router-dom'
 import AllMeetupsPage from './pages/AllMeetups';
 import NewMeetsupPage from './pages/NewMeetups';
 import FaviouritePage from './pages/Faviourite';
