@@ -14,7 +14,7 @@ function NewMeetupForm(props) {
         const enteredAddress= addressInputRef.current.value
 
         const meetupData = {
-                userId:7,
+                userId:8,
                 date:"2020-02-03",
                 products:[
                     {productId:5,quantity:1},
