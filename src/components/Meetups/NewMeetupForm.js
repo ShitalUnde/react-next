@@ -2,7 +2,7 @@ import  React, {useRef} from "react";
 import Card from "../ui/Card"
  
 
-function NewMeetupForm() {
+function NewMeetupForm(props) {
     const titleInputRef = useRef()
     const addressInputRef = useRef()
 
@@ -21,6 +21,8 @@ function NewMeetupForm() {
                     {productId:1,quantity:5}
                 ]  
         }
+
+
        // console.log(meetupData)
 
         // fetch("https://fakestoreapi.com/carts",
@@ -34,6 +36,8 @@ function NewMeetupForm() {
         //         body: JSON.stringify(meetupData)
         //     })
         //     .then(response=> response.json())
+
+        props.onAddMeetup(meetupData);
     }
     return (
         <Card>
