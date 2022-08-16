@@ -17,18 +17,33 @@ const DUMMY_DATA = [
     },
 ]
 function AllMeetupsPage() {
+    const [isLoading, setIsLoading] = useState(false)
+
     const [data, setData] = useState([])
 
     useEffect(() => {
 
         try {
+            // fetch(`https://jsonplaceholder.typicode.com/posts?_limit=10`)
+            // .then((data) => {
+            //     return data.json()
+            // })
+            // .then(data => {
+            //     setIsLoading(true)
+            //     setData(data)
+            //     setIsLoading(false)
+            // })
+
             fetch(`https://jsonplaceholder.typicode.com/posts?_limit=10`)
             .then((data) => {
                 return data.json()
             })
             .then(data => {
+                setIsLoading(true)
                 setData(data)
+                setIsLoading(false)
             })
+
 
         } catch (error) {
             console.log(error);
@@ -36,22 +51,30 @@ function AllMeetupsPage() {
 
     }, [])
 
-
-    return (
-        <div>All Meetups Page
-            {/* <ul>
-                {DUMMY_DATA.map((meetup) =>{
-                    return <li key={meetup.id}>
-                       Title: {meetup.type}
-                    </li>
-                })}
-            </ul> */}
-
-            <MeetupList meetups={data} />
-        </div>
-
-
-    )
+        if(isLoading) {
+            return (
+                <section>
+                    <p>Loading....</p>
+                </section>
+            )
+        }
+        else {
+            return (
+                <div>All Meetups Page
+                    {/* <ul>
+                        {DUMMY_DATA.map((meetup) =>{
+                            return <li key={meetup.id}>
+                               Title: {meetup.type}
+                            </li>
+                        })}
+                    </ul> */}
+        
+                    <MeetupList meetups={data} />
+                </div>
+        
+        
+            )
+        }
 }
 
 export default AllMeetupsPage
